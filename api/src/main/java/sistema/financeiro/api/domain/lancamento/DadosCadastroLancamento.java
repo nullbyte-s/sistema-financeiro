@@ -1,4 +1,4 @@
-package sistema.financeiro.api.lancamento;
+package sistema.financeiro.api.domain.lancamento;
 
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
@@ -21,5 +21,10 @@ public record DadosCadastroLancamento(
 
         @Size(max = 200, message
                 = "A observação excede o máximo de 200 caracteres!")
-        String observacao) {
+        String observacao,
+
+        @NotNull
+        Long idCategoria,
+        @NotNull
+        Long idPessoa) {
 }

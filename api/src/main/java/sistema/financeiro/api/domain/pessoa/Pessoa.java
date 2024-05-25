@@ -1,11 +1,11 @@
-package sistema.financeiro.api.pessoa;
+package sistema.financeiro.api.domain.pessoa;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sistema.financeiro.api.endereco.Endereco;
+import sistema.financeiro.api.domain.endereco.Endereco;
 
 @Table(name = "pessoas")
 @Entity(name = "Pessoa")

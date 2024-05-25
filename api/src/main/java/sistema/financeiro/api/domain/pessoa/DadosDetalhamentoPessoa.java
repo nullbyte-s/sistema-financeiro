@@ -1,6 +1,6 @@
-package sistema.financeiro.api.pessoa;
+package sistema.financeiro.api.domain.pessoa;
 
-import sistema.financeiro.api.endereco.Endereco;
+import sistema.financeiro.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoPessoa(
         Long id, String nome,

@@ -1,4 +1,4 @@
-package sistema.financeiro.api.categoria;
+package sistema.financeiro.api.domain.categoria;
 
 public record DadosDetalhamentoCategoria(Long id, String nome) {
     public DadosDetalhamentoCategoria(Categoria categoria) {

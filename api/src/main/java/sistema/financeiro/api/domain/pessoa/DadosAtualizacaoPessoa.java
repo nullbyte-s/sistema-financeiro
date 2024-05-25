@@ -1,7 +1,7 @@
-package sistema.financeiro.api.pessoa;
+package sistema.financeiro.api.domain.pessoa;
 
 import jakarta.validation.constraints.NotNull;
-import sistema.financeiro.api.endereco.DadosEndereco;
+import sistema.financeiro.api.domain.endereco.DadosEndereco;
 
 public record DadosAtualizacaoPessoa(@NotNull
                                          Long id,

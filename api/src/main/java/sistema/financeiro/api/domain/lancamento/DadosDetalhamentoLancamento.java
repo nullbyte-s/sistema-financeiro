@@ -1,4 +1,4 @@
-package sistema.financeiro.api.lancamento;
+package sistema.financeiro.api.domain.lancamento;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,7 +10,10 @@ public record DadosDetalhamentoLancamento(
         LocalDate dataVencimento,
         LocalDate dataPagamento,
         BigDecimal valor,
-        String observacao) {
+        String observacao,
+        Long idCategoria,
+        Long idPessoa) {
+
     public DadosDetalhamentoLancamento(Lancamento lancamento) {
         this(lancamento.getId(),
                 lancamento.getLancamento(),
@@ -18,6 +21,8 @@ public record DadosDetalhamentoLancamento(
                 lancamento.getVencimento(),
                 lancamento.getPagamento(),
                 lancamento.getValor(),
-                lancamento.getObservacao());
+                lancamento.getObservacao(),
+                lancamento.getIdCategoria().getId(),
+                lancamento.getIdPessoa().getId());
     }
 }

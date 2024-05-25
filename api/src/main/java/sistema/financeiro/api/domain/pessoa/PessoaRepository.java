@@ -1,4 +1,4 @@
-package sistema.financeiro.api.pessoa;
+package sistema.financeiro.api.domain.pessoa;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,7 +1,6 @@
-package sistema.financeiro.api.lancamento;
+package sistema.financeiro.api.domain.lancamento;
 
 import jakarta.validation.constraints.NotNull;
-import sistema.financeiro.api.endereco.DadosEndereco;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,5 +12,7 @@ public record DadosAtualizacaoLancamento(@NotNull
                                          LocalDate dataVencimento,
                                          LocalDate dataPagamento,
                                          BigDecimal valor,
-                                         String observacao) {
+                                         String observacao,
+                                         Long idCategoria,
+                                         Long idPessoa) {
 }

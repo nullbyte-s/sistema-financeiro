@@ -1,4 +1,4 @@
-package sistema.financeiro.api.pessoa;
+package sistema.financeiro.api.domain.pessoa;
 
 import org.jetbrains.annotations.NotNull;
 

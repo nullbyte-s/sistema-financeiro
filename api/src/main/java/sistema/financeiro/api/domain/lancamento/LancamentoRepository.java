@@ -1,4 +1,4 @@
-package sistema.financeiro.api.lancamento;
+package sistema.financeiro.api.domain.lancamento;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

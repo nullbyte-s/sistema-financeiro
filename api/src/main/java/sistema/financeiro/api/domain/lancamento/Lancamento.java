@@ -1,12 +1,12 @@
-package sistema.financeiro.api.lancamento;
+package sistema.financeiro.api.domain.lancamento;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sistema.financeiro.api.categoria.Categoria;
-import sistema.financeiro.api.pessoa.Pessoa;
+import sistema.financeiro.api.domain.categoria.Categoria;
+import sistema.financeiro.api.domain.pessoa.Pessoa;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -32,13 +32,13 @@ public class Lancamento {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    private Categoria idCategoria;
 
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
-    private Pessoa pessoa;
+    private Pessoa idPessoa;
 
-    public Lancamento(DadosCadastroLancamento dados) {
+    public Lancamento(DadosCadastroLancamento dados, Categoria categoria, Pessoa pessoa) {
         this.ativo = true;
         this.lancamento = dados.lancamento();
         this.descricao = dados.descricao();
@@ -46,26 +46,35 @@ public class Lancamento {
         this.pagamento = dados.dataPagamento();
         this.valor = dados.valor();
         this.observacao = dados.observacao();
+        this.idCategoria = categoria;
+        this.idPessoa = pessoa;
     }
 
-    public void atualizarInformacoes(DadosAtualizacaoLancamento dados) {
-        if(dados.lancamento() != null) {
+
+    public void atualizarInformacoes(DadosAtualizacaoLancamento dados, Categoria categoria, Pessoa pessoa) {
+        if (dados.lancamento() != null) {
             this.lancamento = dados.lancamento();
         }
-        if(dados.descricao() != null) {
+        if (dados.descricao() != null) {
             this.descricao = dados.descricao();
         }
-        if(dados.dataVencimento() != null) {
+        if (dados.dataVencimento() != null) {
             this.vencimento = dados.dataVencimento();
         }
-        if(dados.dataPagamento() != null) {
+        if (dados.dataPagamento() != null) {
             this.pagamento = dados.dataPagamento();
         }
-        if(dados.valor() != null) {
+        if (dados.valor() != null) {
             this.valor = dados.valor();
         }
-        if(dados.observacao() != null) {
+        if (dados.observacao() != null) {
             this.observacao = dados.observacao();
+        }
+        if (categoria != null) {
+            this.idCategoria = categoria;
+        }
+        if (pessoa != null) {
+            this.idPessoa = pessoa;
         }
     }
 

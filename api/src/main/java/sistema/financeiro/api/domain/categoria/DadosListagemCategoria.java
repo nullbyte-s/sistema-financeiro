@@ -1,4 +1,4 @@
-package sistema.financeiro.api.categoria;
+package sistema.financeiro.api.domain.categoria;
 
 import org.jetbrains.annotations.NotNull;
 

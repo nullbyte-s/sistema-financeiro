@@ -1,10 +1,9 @@
-package sistema.financeiro.api.endereco;
+package sistema.financeiro.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sistema.financeiro.api.endereco.DadosEndereco;
 
 @Embeddable
 @Getter

@@ -3,12 +3,12 @@ package sistema.financeiro.api.controller;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.web.util.UriComponentsBuilder;
-import sistema.financeiro.api.categoria.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.*;
+import sistema.financeiro.api.domain.categoria.*;
 
 @RestController
 @RequestMapping("categorias")
@@ -52,5 +52,11 @@ public class CategoriaController {
         categoria.excluir();
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var categoria = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoCategoria(categoria));
     }
 }

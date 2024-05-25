@@ -1,4 +1,4 @@
-package sistema.financeiro.api.lancamento;
+package sistema.financeiro.api.domain.lancamento;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -11,7 +11,9 @@ public record DadosListagemLancamento(Long id,
                                       LocalDate dataVencimento,
                                       LocalDate dataPagamento,
                                       BigDecimal valor,
-                                      String observacao) {
+                                      String observacao,
+                                      Long idCategoria,
+                                      Long idPessoa) {
     public DadosListagemLancamento(@NotNull Lancamento lancamento){
         this(lancamento.getId(),
                 lancamento.getLancamento(),
@@ -19,6 +21,8 @@ public record DadosListagemLancamento(Long id,
                 lancamento.getVencimento(),
                 lancamento.getPagamento(),
                 lancamento.getValor(),
-                lancamento.getObservacao());
+                lancamento.getObservacao(),
+                lancamento.getIdCategoria().getId(),
+                lancamento.getIdPessoa().getId());
     }
 }

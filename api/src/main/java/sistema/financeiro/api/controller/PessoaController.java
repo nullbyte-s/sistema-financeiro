@@ -3,7 +3,7 @@ package sistema.financeiro.api.controller;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.web.util.UriComponentsBuilder;
-import sistema.financeiro.api.pessoa.*;
+import sistema.financeiro.api.domain.pessoa.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
@@ -52,5 +52,11 @@ public class PessoaController {
         pessoa.excluir();
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        var pessoa = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoPessoa(pessoa));
     }
 }

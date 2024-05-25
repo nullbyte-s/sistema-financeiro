@@ -1,4 +1,4 @@
-package sistema.financeiro.api.endereco;
+package sistema.financeiro.api.domain.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
