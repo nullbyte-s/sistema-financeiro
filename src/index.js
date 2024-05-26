@@ -1,29 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 import './index.css';
-import './lancamentos.css';
-import { Form, Lancamentos } from './components/lancamentos';
-import reportWebVitals from './reportWebVitals';
 
-const lancamentosMock = [
-  { descricao: 'Conta de Luz', vencimento: '10/05/2024', valor: 100.00 },
-  { descricao: 'Conta de Água', vencimento: '15/05/2024', valor: 80.00 },
-  { descricao: 'Conta de Internet', vencimento: '16/05/2024', valor: 90.00 },
-];
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>,
+//   document.getElementById('root')
+// );
 
-const handleSubmit = (descricao, valor, vencimento) => {
-  console.log('Descrição:', descricao);
-  console.log('Valor:', valor);
-  console.log('Vencimento:', vencimento);
-};
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Form onSubmit={handleSubmit} />
-    <Lancamentos lancamentos={lancamentosMock} />
-  </React.StrictMode>,
+ReactDOM.createRoot(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
-reportWebVitals();
+// reportWebVitals();
