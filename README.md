@@ -44,13 +44,13 @@ cd sistema-financeiro/frontend
 npm install
 ```
 
-4. Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
+4. Rode a API do Backend através de uma IDE compatível com projetos do Spring Boot:
 
 ```
-REACT_APP_API_URL=http://localhost:8080
+$userprofile/.jdks/openjdk-21.0.1/bin/java.exe "-${params} sistema/financeiro/api/ApiApplication.java"
 ```
 
-5. Inicie a aplicação:
+5. Inicie a aplicação do Frontend:
 
 ```
 npm start

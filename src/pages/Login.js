@@ -1,52 +1,58 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import UsuarioService from '../services/UsuarioService';
+import './Login.css';
 
-const Login = ({ history }) => {
-  const [credenciais, setCredenciais] = useState({ email: '', senha: '' });
-  const { login } = useContext(AuthContext);
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
+  const navigate = useNavigate();
+  const { setUsuarioAutenticado } = useContext(AuthContext);
   const usuarioService = new UsuarioService();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCredenciais({ ...credenciais, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await usuarioService.login(credenciais);
-      login(response.data);
-      history.push('/');
+      const response = await usuarioService.autenticarUsuario({ email, senha });
+      setUsuarioAutenticado(response.data);
+      navigate('/');
     } catch (error) {
-      console.error('Erro ao fazer login', error);
+      setErro('Email ou senha inválidos');
+      console.error(error);
     }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
           <label>Email</label>
           <input
             type="email"
-            name="email"
-            value={credenciais.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Senha</label>
           <input
             type="password"
-            name="senha"
-            value={credenciais.senha}
-            onChange={handleChange}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
           />
         </div>
+        {erro && <p className="erro">{erro}</p>}
         <button type="submit">Login</button>
       </form>
+      <div className="register-link">
+        <p>Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link></p>
+      </div>
     </div>
   );
 };
